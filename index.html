@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>yoshiro — motion design</title>
+  <meta name="description" content="yoshiro, freelance motion designer and video editor: logo animation, promo videos, editing, telegram bots and small ai automations.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DotGothic16&family=VT323&family=Handjet:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#main" data-i18n="skip">skip to content</a>
+  <div class="fx" aria-hidden="true"></div>
+
+  <header class="top">
+    <a class="name" href="#/">yoshiro</a>
+    <button class="burger" aria-expanded="false" aria-controls="nav">[menu]</button>
+    <!-- Язык: en — тексты прямо в разметке, ru — словарь RU в main.js (по ключам data-i18n) -->
+    <span class="lang" role="group" aria-label="Language"><button data-lang="en">en</button><button class="sl" data-lang-toggle aria-label="Switch language">/</button><button data-lang="ru">ru</button></span>
+    <nav id="nav" aria-label="Main">
+      <a href="#/" data-route="home" data-i18n="nav.home"><i>01</i>home</a>
+      <a href="#/about" data-route="about" data-i18n="nav.about"><i>02</i>about</a>
+      <a href="#/skills" data-route="skills" data-i18n="nav.skills"><i>03</i>skills</a>
+      <a href="#/works" data-route="works" data-i18n="nav.works"><i>04</i>works</a>
+      <a href="#/contact" data-route="contact" data-i18n="nav.contact"><i>05</i>contact</a>
+    </nav>
+    <span class="clock" aria-hidden="true"><span id="clock">--:--:--</span></span>
+  </header>
+
+  <div class="debris" aria-hidden="true"></div>
+  <!-- белое → прозрачное, серое → полупрозрачные чернила: так обломки ложатся на страницу без mix-blend -->
+  <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+    <filter id="ink" color-interpolation-filters="sRGB"><feColorMatrix values="0 0 0 0 0.03  0 0 0 0 0.03  0 0 0 0 0.03  -1 0 0 1 0"/></filter>
+  </svg>
+
+  <!-- Каждая страница устроена одинаково (как страница works, которая понравилась):
+       слева стена логов и блок с информацией, справа разорванный ангел, за ними — бледные лозы.
+       .vine: --x --y --w — где лежит фон с лозами или роза (.front — поверх ангела).
+       data-chains: цепи поперёк ангела, [x1, y1, x2, y2, провис] в долях картинки (0 — левый/верхний край, 1 — правый/нижний) -->
+  <main id="main">
+
+    <section class="page" data-route="home" aria-labelledby="h-home">
+      <div class="vine" style="--x: 38%; --y: -4%; --w: 46%"><img src="img/willow.jpg" alt=""></div>
+      <pre class="wall" aria-hidden="true" data-log="boot"></pre>
+      <div class="vine rose front" style="--x: 72%; --y: 52%; --w: 26%"><img src="img/rose.jpg" alt=""></div>
+      <figure class="pimg angel" data-chains="[[-0.05,0.36,1.05,0.6,0.05],[0.02,0.78,0.98,0.46,0.06],[0.3,-0.05,0.62,1.05,0.02]]"><img src="img/cabanel.jpg" alt="The Fallen Angel by Alexandre Cabanel, torn into grey fragments"><canvas aria-hidden="true"></canvas></figure>
+      <div class="note">
+        <h1 id="h-home" tabindex="-1" class="rgb" data-text="yoshiro">yoshiro</h1>
+        <p class="lead" data-i18n="home.lead">motion design, video editing, logo animation, promo videos, telegram bots, ai automation.</p>
+        <button class="run" data-reel data-i18n="home.reel" style="margin: 6px 0 14px; white-space: nowrap">showreel · 1 min ▶</button>
+        <ul class="list">
+          <li><a href="#/about" data-i18n="home.about"><i>02</i>about<span>who i am</span></a></li>
+          <li><a href="#/skills" data-i18n="home.skills"><i>03</i>skills<span>what i make</span></a></li>
+          <li><a href="#/works" data-i18n="home.works"><i>04</i>works<span>showreel</span></a></li>
+          <li><a href="#/contact" data-i18n="home.contact"><i>05</i>contact<span>where to find me</span></a></li>
+        </ul>
+      </div>
+      <!-- Цитата собирается из рваных обрывков, держится и снова разлетается -->
+      <figure class="shards">
+        <canvas aria-hidden="true"></canvas>
+        <figcaption class="sr-only">“The mind is its own place, and in itself can make a heaven of hell, a hell of heaven.” — John Milton, Paradise Lost</figcaption>
+      </figure>
+    </section>
+
+    <section class="page" data-route="about" aria-labelledby="h-about" hidden>
+      <div class="vine" style="--x: 50%; --y: 30%; --w: 44%"><img src="img/acanthus.jpg" alt=""></div>
+      <pre class="wall" aria-hidden="true" data-log="apt"></pre>
+      <div class="vine rose" style="--x: -2%; --y: 48%; --w: 28%"><img src="img/briar.jpg" alt=""></div>
+      <figure class="pimg angel" data-chains="[[-0.05,0.28,1.05,0.56,0.06],[0.05,0.74,1.02,0.4,0.05]]"><img src="img/satan.jpg" alt="Satan in profile, an engraving by Gustave Doré, torn into grey fragments"><canvas aria-hidden="true"></canvas></figure>
+      <div class="note">
+        <h1 id="h-about" tabindex="-1" class="rgb" data-text="about" data-i18n="h.about">about</h1>
+        <p class="lead" data-i18n="about.lead">hi! i’m Artem. i do design and i’m pretty good at editing :)</p>
+        <p data-i18n="about.p1">i take a logo or an idea and give it life — movement, rhythm and sound. i animate logos, build promo videos and edit for youtube and social media.</p>
+        <p data-i18n="about.p2">i love dark aesthetics and old engravings — that’s where this site comes from.</p>
+        <p class="dim" data-i18n="about.p3">write me — let’s bring your idea to life.</p>
+      </div>
+    </section>
+
+    <section class="page" data-route="skills" aria-labelledby="h-skills" hidden>
+      <div class="vine" style="--x: 30%; --y: 20%; --w: 40%"><img src="img/willow.jpg" alt=""></div>
+      <pre class="wall" aria-hidden="true" data-log="render"></pre>
+      <div class="vine rose front" style="--x: 80%; --y: 4%; --w: 22%"><img src="img/rose.jpg" alt=""></div>
+      <figure class="pimg angel" data-chains="[[-0.05,0.44,1.05,0.62,0.05],[0.7,-0.05,0.4,0.95,0.03]]"><img src="img/climb.jpg" alt="A fallen angel climbing a cliff, an engraving by Gustave Doré, torn into grey fragments"><canvas aria-hidden="true"></canvas></figure>
+      <div class="note">
+        <h1 id="h-skills" tabindex="-1" class="rgb" data-text="skills" data-i18n="h.skills">skills</h1>
+        <ul class="list plain">
+          <li data-i18n="sk.1"><i>01</i>logo animation</li>
+          <li data-i18n="sk.2"><i>02</i>promo videos</li>
+          <li data-i18n="sk.3"><i>03</i>video editing</li>
+          <li data-i18n="sk.4"><i>04</i>sound design</li>
+          <li data-i18n="sk.5"><i>05</i>telegram bots</li>
+          <li data-i18n="sk.6"><i>06</i>ai automation</li>
+          <li data-i18n="sk.7"><i>07</i>ai art direction</li>
+          </ul>
+      </div>
+    </section>
+
+    <section class="page" data-route="works" aria-labelledby="h-works" hidden>
+      <div class="vine" style="--x: 46%; --y: 12%; --w: 44%"><img src="img/acanthus.jpg" alt=""></div>
+      <pre class="wall" aria-hidden="true" data-log="render"></pre>
+      <div class="vine rose front" style="--x: 68%; --y: 54%; --w: 28%"><img src="img/briar.jpg" alt=""></div>
+      <figure class="pimg angel" data-chains="[[0.02,0.22,0.66,0.74,0.04],[0.32,0.2,1.02,0.56,0.05]]"><img src="img/fallen.jpg" alt="A fallen angel lying on the ground, an engraving by Gustave Doré, torn into grey fragments"><canvas aria-hidden="true"></canvas></figure>
+      <div class="note">
+        <h1 id="h-works" tabindex="-1" class="rgb" data-text="works" data-i18n="h.works">works</h1>
+        <button class="run" data-reel data-i18n="reel">play showreel ▶</button>
+      </div>
+    </section>
+
+    <section class="page" data-route="contact" aria-labelledby="h-contact" hidden>
+      <div class="vine" style="--x: 40%; --y: 26%; --w: 48%"><img src="img/willow.jpg" alt=""></div>
+      <pre class="wall" aria-hidden="true" data-log="apt"></pre>
+      <div class="vine rose" style="--x: -4%; --y: 50%; --w: 30%"><img src="img/rose.jpg" alt=""></div>
+      <figure class="pimg angel" data-chains="[[0.08,0.18,0.94,0.52,0.05],[0.28,0.78,1.04,0.34,0.06]]"><img src="img/fall.jpg" alt="A fallen angel tumbling through clouds, an engraving by Gustave Doré, torn into grey fragments"><canvas aria-hidden="true"></canvas></figure>
+      <div class="note">
+        <h1 id="h-contact" tabindex="-1" class="rgb" data-text="contact" data-i18n="h.contact">contact</h1>
+        <!-- Ссылки впишет владелец сайта -->
+        <ul class="list">
+          <li><a href="#"><i>↗</i>telegram</a></li>
+          <!-- биржи вернуть, когда будут профили:
+          <li><a href="#"><i>↗</i>fiverr</a></li>
+          <li><a href="#"><i>↗</i>upwork</a></li>
+          <li><a href="#"><i>↗</i>freelancehunt</a></li> -->
+        </ul>
+        <p class="dim" data-i18n="c.note">tell me what your brand should feel like — i’ll answer with a first idea.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="status">
+    <span>© yoshiro</span>
+    <a class="next" href="#/about"><span data-i18n="next">next:</span> <b></b> →</a>
+  </footer>
+
+  <!-- Плеер работ: открывается со страницы works -->
+  <dialog class="viewer" aria-labelledby="v-title">
+    <div class="v-top">
+      <b id="v-title"></b>
+      <span class="dim" id="v-meta"></span>
+      <button class="v-close" aria-label="Close">[esc]</button>
+    </div>
+    <div class="v-frame"><video playsinline controls preload="metadata"></video></div>
+    <div class="v-info">
+      <div><p id="v-brief"></p><ul id="v-done"></ul></div>
+      
+    </div>
+  </dialog>
+
+  <script src="main.js"></script>
+</body>
+</html>

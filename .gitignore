@@ -1,0 +1,7 @@
+# чужие референсы — не публиковать
+reference/
+# отвергнутые работы — на сайте не показываются
+works/halden.*
+works/nordval.*
+works/respawn*
+works/yoru*
