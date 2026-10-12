@@ -3,8 +3,8 @@
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const smooth = (a, b, v) => { const t = clamp((v - a) / (b - a), 0, 1); return t * t * (3 - 2 * t); };
-const css = getComputedStyle(document.documentElement);
-const INK = css.getPropertyValue('--ink').trim(), DIM = css.getPropertyValue('--dim').trim(), CYAN = css.getPropertyValue('--cyan').trim();
+// цвета светлой темы: холсты всегда рисуются «на бумаге», в тёмной теме их инвертирует CSS
+const INK = '#121413', DIM = '#3d4240', CYAN = '#1d8ea2';
 
 const ROUTES = ['home', 'about', 'skills', 'works', 'contact'];
 const pages = Object.fromEntries([...document.querySelectorAll('.page')].map((p) => [p.dataset.route, p]));
@@ -30,6 +30,7 @@ const RU = {
   reel: 'смотреть шоурил ▶', 'home.reel': 'шоурил · 1 мин ▶',
   'c.note': 'расскажи, каким должен ощущаться твой бренд или в чём задача — отвечу первой идеей.',
   next: 'дальше:',
+  'th.light': 'свет', 'th.dark': 'тьма',
 };
 const NAMES = {
   en: { home: 'home', about: 'about', skills: 'skills', works: 'works', contact: 'contact', menu: '[menu]', close: '[close]', title: 'yoshiro — motion design', reel: 'showreel' },
@@ -64,6 +65,18 @@ function pickLang(l) {
 }
 document.querySelectorAll('[data-lang]').forEach((b) => b.addEventListener('click', () => pickLang(b.dataset.lang)));
 document.querySelector('[data-lang-toggle]')?.addEventListener('click', () => pickLang(lang === 'en' ? 'ru' : 'en'));
+
+/* ---------- Тема (light / dark) ----------
+   Ставится ещё в <head>, здесь только кнопки. Гравюры, цепи и цитата в тёмной теме
+   не перерисовываются — их слои просто инвертирует CSS. */
+function setTheme(th, save = true) {
+  document.documentElement.dataset.theme = th;
+  if (save) try { localStorage.setItem('theme', th); } catch {}   // пока посетитель сам не выбрал — следуем за системой
+  document.querySelectorAll('[data-theme-set]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.themeSet === th)));
+}
+setTheme(document.documentElement.dataset.theme, false);
+document.querySelectorAll('[data-theme-set]').forEach((b) => b.addEventListener('click', () => setTheme(b.dataset.themeSet)));
+document.querySelector('[data-theme-toggle]')?.addEventListener('click', () => setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
 
 function tween(dur, f, delay = 0) {
   return new Promise((done) => setTimeout(() => {

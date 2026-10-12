@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>yoshiro — motion design</title>
   <meta name="description" content="yoshiro, freelance motion designer and video editor: logo animation, promo videos, editing, telegram bots and small ai automations.">
+  <!-- своя тёмная тема: расширения вроде Dark Reader сайт не перекрашивают -->
+  <meta name="darkreader-lock">
+  <meta name="color-scheme" content="light dark">
+  <!-- тема ставится до отрисовки, чтобы не мигало: выбор посетителя, иначе — как в системе -->
+  <script>{ let t; try { t = localStorage.getItem('theme'); } catch {}
+    document.documentElement.dataset.theme = t === 'dark' || t === 'light' ? t : matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DotGothic16&family=VT323&family=Handjet:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -19,6 +25,7 @@
     <button class="burger" aria-expanded="false" aria-controls="nav">[menu]</button>
     <!-- Язык: en — тексты прямо в разметке, ru — словарь RU в main.js (по ключам data-i18n) -->
     <span class="lang" role="group" aria-label="Language"><button data-lang="en">en</button><button class="sl" data-lang-toggle aria-label="Switch language">/</button><button data-lang="ru">ru</button></span>
+    <span class="lang theme" role="group" aria-label="Theme"><button data-theme-set="light" data-i18n="th.light">light</button><button class="sl" data-theme-toggle aria-label="Switch theme">/</button><button data-theme-set="dark" data-i18n="th.dark">dark</button></span>
     <nav id="nav" aria-label="Main">
       <a href="#/" data-route="home" data-i18n="nav.home"><i>01</i>home</a>
       <a href="#/about" data-route="about" data-i18n="nav.about"><i>02</i>about</a>
