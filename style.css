@@ -164,6 +164,11 @@ h1 { font: 400 36px/1 var(--pixel); color: var(--hi); margin-bottom: 12px; outli
   .vine { width: 90% !important; left: 5% !important; }
   .vine.rose { width: 55% !important; left: auto !important; right: -6%; }
 }
+/* узкий телефон: от переключателя темы остаётся одно слово — та тема, на которую переключит */
+@media (max-width: 520px) {
+  .top { gap: 14px; }
+  .theme .sl, .theme [aria-pressed='true'] { display: none; }
+}
 @media (prefers-reduced-motion: reduce) {
   .fx::after { animation: none; }
   .page.out *, .page.in * { animation: none !important; }

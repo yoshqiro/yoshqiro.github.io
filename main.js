@@ -30,7 +30,7 @@ const RU = {
   reel: 'смотреть шоурил ▶', 'home.reel': 'шоурил · 1 мин ▶',
   'c.note': 'расскажи, каким должен ощущаться твой бренд или в чём задача — отвечу первой идеей.',
   next: 'дальше:',
-  'th.light': 'свет', 'th.dark': 'тьма',
+  'th.light': 'светлая', 'th.dark': 'тёмная',
 };
 const NAMES = {
   en: { home: 'home', about: 'about', skills: 'skills', works: 'works', contact: 'contact', menu: '[menu]', close: '[close]', title: 'yoshiro — motion design', reel: 'showreel' },
